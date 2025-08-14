@@ -35,9 +35,9 @@ export function TodoList() {
         className="text-center py-16 border border-dashed border-border/50 rounded-lg"
       >
         <Moon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium mb-2 text-foreground/80">Empty. For now.</h3>
+        <h3 className="text-lg font-medium mb-2 text-foreground/80">A brief, deceptive calm.</h3>
         <p className="text-muted-foreground">
-          Go on, add a task. The void awaits.
+          The silence will soon be broken by obligation.
         </p>
       </motion.div>
     );
@@ -51,7 +51,7 @@ export function TodoList() {
       {pendingTodos.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            Lingering ({pendingTodos.length})
+            The Weight of the Present ({pendingTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>
@@ -66,7 +66,7 @@ export function TodoList() {
       {completedTodos.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            Finished... for what? ({completedTodos.length})
+            Ghosts of Accomplishment ({completedTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>

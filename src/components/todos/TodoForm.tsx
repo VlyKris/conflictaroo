@@ -75,7 +75,7 @@ export function TodoForm() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Add a New Burden</DialogTitle>
+          <DialogTitle>Document a New Despair</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -84,7 +84,7 @@ export function TodoForm() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What fresh hell is this?"
+              placeholder="Another promise to break?"
               required
             />
           </div>
@@ -136,10 +136,10 @@ export function TodoForm() {
               onClick={() => setOpen(false)}
               disabled={isLoading}
             >
-              Flee
+              Pretend it's not there
             </Button>
             <Button type="submit" variant="outline" disabled={isLoading}>
-              {isLoading ? "Adding..." : "Add to the Pile"}
+              {isLoading ? "Committing..." : "Commit to the Void"}
             </Button>
           </div>
         </form>

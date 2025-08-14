@@ -26,8 +26,8 @@ export function TodoItem({ todo }: TodoItemProps) {
       await toggleTodo({ id: todo._id });
       toast.success(
         todo.completed
-          ? "It's back to haunt you."
-          : "One more thing done. So what.",
+          ? "The burden returns."
+          : "A single drop in an ocean of 'to-do'.",
       );
     } catch (error) {
       toast.error("The void resists your changes.");
@@ -38,9 +38,9 @@ export function TodoItem({ todo }: TodoItemProps) {
   const handleDelete = async () => {
     try {
       await deleteTodo({ id: todo._id });
-      toast.success("Another one bites the dust.");
+      toast.success("Erased. For now.");
     } catch (error) {
-      toast.error("It refuses to be erased.");
+      toast.error("It refuses to be forgotten.");
       console.error(error);
     }
   };
@@ -133,7 +133,7 @@ export function TodoItem({ todo }: TodoItemProps) {
               className="text-destructive cursor-pointer focus:bg-destructive/10 focus:text-destructive"
             >
               <Trash2 className="h-4 w-4 mr-2" />
-              Cast to Oblivion
+              Erase from Memory
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

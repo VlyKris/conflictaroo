@@ -41,9 +41,9 @@ export default function Dashboard() {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8">
-              <h1 className="text-3xl font-bold mb-2 text-foreground/90">My Burdens</h1>
+              <h1 className="text-3xl font-bold mb-2 text-foreground/90">The Unending Scroll</h1>
               <p className="text-muted-foreground">
-                Here they are. The tasks that weigh you down.
+                A digital monument to all you have yet to do.
               </p>
             </div>
 

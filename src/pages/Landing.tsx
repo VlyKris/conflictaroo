@@ -7,23 +7,27 @@ export default function Landing() {
   const features = [
     {
       icon: ListTodo,
-      title: "A Record of Your Burdens",
-      description: "List the tasks that weigh on your soul. Watch them pile up.",
+      title: "An Infinite Scroll",
+      description:
+        "Document your obligations. Watch as they form an endless, digital chain.",
     },
     {
       icon: Layers,
-      title: "Rank Your Sufferings", 
-      description: "Assign priority to your sorrows. Which agony comes first?",
+      title: "Categorize Your Angst",
+      description:
+        "Assign priority to your duties. A futile attempt to order the chaos.",
     },
     {
       icon: Clock,
-      title: "Inevitable Deadlines",
-      description: "The steady, relentless march towards a finish line you may never cross.",
+      title: "The Unrelenting March",
+      description:
+        "Set deadlines that tick closer, each moment a reminder of what's to come.",
     },
     {
       icon: Archive,
-      title: "Constant Reminders",
-      description: "Your list, a persistent echo in the quiet corners of your digital life.",
+      title: "A Persistent Echo",
+      description:
+        "Your list, a digital ghost haunting the periphery of your consciousness.",
     },
   ];
 
@@ -61,13 +65,13 @@ export default function Landing() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-foreground/90">
-              Confront the Void
+              Document the Descent
               <br />
-              <span className="text-foreground/50">One Task at a Time</span>
+              <span className="text-foreground/50">A Task at a Time</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              A futile attempt to bring order to the chaos. Each task, a stark
-              reminder of the unending list that is life.
+              An exercise in futility. Each task, a single drop in an ocean of
+              unending obligation. Catalogue the inevitable.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -80,7 +84,7 @@ export default function Landing() {
                     className="text-lg px-8 py-6"
                     variant="outline"
                   >
-                    Begin the Struggle
+                    Acknowledge the Burden
                   </Button>
                 }
               />
@@ -98,9 +102,9 @@ export default function Landing() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-foreground/80">An Unending Cycle</h2>
+            <h2 className="text-4xl font-bold mb-4 text-foreground/80">The Anatomy of Despair</h2>
             <p className="text-xl text-muted-foreground">
-              Features designed to reflect the pointlessness of it all.
+              Tools designed to quantify the weight of existence.
             </p>
           </motion.div>
 
@@ -132,9 +136,9 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h2 className="text-4xl font-bold mb-6 text-foreground/80">Ready for More?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-foreground/80">Still Here?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              The void is patient. It will wait for you to add another task to the pile.
+              The list is patient. It will wait for you to add another stone to the pile.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -147,7 +151,7 @@ export default function Landing() {
                     className="text-lg px-8 py-6"
                     variant="outline"
                   >
-                    Embrace the Inevitable
+                    Continue the Cycle
                   </Button>
                 }
               />
@@ -159,7 +163,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-border/50 bg-background/80">
         <div className="max-w-6xl mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 Sigh... Another day, another list.</p>
+          <p>&copy; 2024 Sigh... And so it continues.</p>
         </div>
       </footer>
     </div>

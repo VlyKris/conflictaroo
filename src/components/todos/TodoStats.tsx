@@ -26,25 +26,25 @@ export function TodoStats() {
 
   const statCards = [
     {
-      title: "Total Burdens",
+      title: "Sum of Sorrows",
       value: stats.total,
       icon: Sigma,
       color: "text-primary",
     },
     {
-      title: "Briefly Relieved",
+      title: "Moments of Respite",
       value: stats.completed,
       icon: Check,
       color: "text-green-500/80",
     },
     {
-      title: "Still Suffering",
+      title: "Actively Enduring",
       value: stats.pending,
       icon: Hourglass,
       color: "text-yellow-500/80",
     },
     {
-      title: "Urgent Woes",
+      title: "Imminent Dread",
       value: stats.highPriority,
       icon: ShieldAlert,
       color: "text-destructive",
