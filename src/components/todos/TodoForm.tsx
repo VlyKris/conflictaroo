@@ -36,7 +36,7 @@ export function TodoForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) {
-      toast.error("A title, however meaningless, is required.");
+      toast.error("A vibe needs a title.");
       return;
     }
 
@@ -49,14 +49,14 @@ export function TodoForm() {
         dueDate: dueDate ? new Date(dueDate).getTime() : undefined,
       });
 
-      toast.success("Another burden has been added.");
+      toast.success("New vibe captured.");
       setTitle("");
       setDescription("");
       setPriority("medium");
       setDueDate("");
       setOpen(false);
     } catch (error) {
-      toast.error("Failed to add to the pile. A moment of respite.");
+      toast.error("Failed to capture vibe. The flow is disrupted.");
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -67,15 +67,15 @@ export function TodoForm() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button className="gap-2" variant="outline">
+          <Button className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
             <Plus className="h-4 w-4" />
-            Add Burden
+            New Vibe
           </Button>
         </motion.div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-card border-border">
         <DialogHeader>
-          <DialogTitle>Document a New Despair</DialogTitle>
+          <DialogTitle className="text-primary" style={{textShadow: '0 0 4px oklch(var(--primary))'}}>Capture a New Vibe</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -84,7 +84,7 @@ export function TodoForm() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="Another promise to break?"
+              placeholder="What's the vibe?"
               required
             />
           </div>
@@ -95,13 +95,13 @@ export function TodoForm() {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Elaborate on the misery..."
+              placeholder="Add the details... make it aesthetic."
               rows={3}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority">Suffering Level</Label>
+            <Label htmlFor="priority">Energy Level</Label>
             <Select
               value={priority}
               onValueChange={(value: "low" | "medium" | "high") =>
@@ -112,15 +112,15 @@ export function TodoForm() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Tolerable</SelectItem>
-                <SelectItem value="medium">Challenging</SelectItem>
-                <SelectItem value="high">Excruciating</SelectItem>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="dueDate">Inevitable Deadline (optional)</Label>
+            <Label htmlFor="dueDate">Sunset Date (optional)</Label>
             <Input
               id="dueDate"
               type="date"
@@ -136,10 +136,10 @@ export function TodoForm() {
               onClick={() => setOpen(false)}
               disabled={isLoading}
             >
-              Pretend it's not there
+              Fade Out
             </Button>
-            <Button type="submit" variant="outline" disabled={isLoading}>
-              {isLoading ? "Committing..." : "Commit to the Void"}
+            <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90" disabled={isLoading}>
+              {isLoading ? "Locking..." : "Lock In"}
             </Button>
           </div>
         </form>

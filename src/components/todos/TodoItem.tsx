@@ -26,11 +26,11 @@ export function TodoItem({ todo }: TodoItemProps) {
       await toggleTodo({ id: todo._id });
       toast.success(
         todo.completed
-          ? "The burden returns."
-          : "A single drop in an ocean of 'to-do'.",
+          ? "Vibe reactivated."
+          : "Vibe captured.",
       );
     } catch (error) {
-      toast.error("The void resists your changes.");
+      toast.error("Signal lost. Try again.");
       console.error(error);
     }
   };
@@ -38,9 +38,9 @@ export function TodoItem({ todo }: TodoItemProps) {
   const handleDelete = async () => {
     try {
       await deleteTodo({ id: todo._id });
-      toast.success("Erased. For now.");
+      toast.success("Vibe cleared.");
     } catch (error) {
-      toast.error("It refuses to be forgotten.");
+      toast.error("Signal lost. Try again.");
       console.error(error);
     }
   };
@@ -50,7 +50,7 @@ export function TodoItem({ todo }: TodoItemProps) {
       case "high":
         return "border-destructive/50 text-destructive";
       case "medium":
-        return "border-yellow-500/30 text-yellow-500/80";
+        return "border-yellow-400/30 text-yellow-400/80";
       case "low":
         return "border-primary/30 text-primary/80";
       default:
@@ -72,7 +72,7 @@ export function TodoItem({ todo }: TodoItemProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
       layout
-      className={`group p-4 border border-border/70 rounded-lg transition-all hover:bg-card/80 ${
+      className={`group p-4 border border-border rounded-lg transition-all hover:border-primary/50 ${
         todo.completed ? "bg-card/50" : "bg-card"
       }`}
     >
@@ -112,7 +112,7 @@ export function TodoItem({ todo }: TodoItemProps) {
           {todo.dueDate && (
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground/70 mt-2">
               <Calendar className="h-3.5 w-3.5" />
-              <span>Due: {formatDate(todo.dueDate)}</span>
+              <span>Sunset: {formatDate(todo.dueDate)}</span>
             </div>
           )}
         </div>
@@ -133,7 +133,7 @@ export function TodoItem({ todo }: TodoItemProps) {
               className="text-destructive cursor-pointer focus:bg-destructive/10 focus:text-destructive"
             >
               <Trash2 className="h-4 w-4 mr-2" />
-              Erase from Memory
+              Clear Vibe
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

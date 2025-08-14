@@ -1,77 +1,78 @@
 import { AuthButton } from "@/components/auth/AuthButton";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Archive, Clock, ListTodo, Layers } from "lucide-react";
+import { Waves, Sunset, SlidersHorizontal, Sparkles } from "lucide-react";
 
 export default function Landing() {
   const features = [
     {
-      icon: ListTodo,
-      title: "An Infinite Scroll",
+      icon: Waves,
+      title: "Endless Vibe Stream",
       description:
-        "Document your obligations. Watch as they form an endless, digital chain.",
+        "Your tasks, flowing in a neon-lit digital river of pure productivity.",
     },
     {
-      icon: Layers,
-      title: "Categorize Your Angst",
+      icon: SlidersHorizontal,
+      title: "Set the Mood",
       description:
-        "Assign priority to your duties. A futile attempt to order the chaos.",
+        "Prioritize with Low, Medium, or High-energy tags to match your flow.",
     },
     {
-      icon: Clock,
-      title: "The Unrelenting March",
+      icon: Sunset,
+      title: "Chase the Sunset",
       description:
-        "Set deadlines that tick closer, each moment a reminder of what's to come.",
+        "Set deadlines that glow like a retro horizon. Never miss a beat.",
     },
     {
-      icon: Archive,
-      title: "A Persistent Echo",
+      icon: Sparkles,
+      title: "Digital Afterglow",
       description:
-        "Your list, a digital ghost haunting the periphery of your consciousness.",
+        "Your completed tasks, a shimmering record of your aesthetic achievements.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground dark">
+    <div className="min-h-screen bg-background text-foreground dark overflow-hidden">
       {/* Header */}
       <motion.header 
-        className="w-full py-4 px-4 border-b border-border/50 bg-background/80 backdrop-blur-sm"
+        className="w-full py-4 px-4 border-b border-border bg-background/80 backdrop-blur-sm"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center">
-              <ListTodo className="h-5 w-5 text-primary" />
+            <div className="w-8 h-8 bg-primary/20 border border-primary/30 rounded-lg flex items-center justify-center">
+              <Waves className="h-5 w-5 text-primary" />
             </div>
-            <span className="text-xl font-bold text-foreground/80">
-              Sigh...
+            <span className="text-xl font-bold text-foreground/90 tracking-wider" style={{textShadow: '0 0 5px oklch(var(--primary))'}}>
+              VibeFlow
             </span>
           </div>
           <AuthButton 
-            trigger={<Button variant="outline">Get Started</Button>}
-            dashboardTrigger={<Button variant="ghost">Enter the Void</Button>}
+            trigger={<Button variant="outline" className="text-primary-foreground bg-primary hover:bg-primary/90">Get Started</Button>}
+            dashboardTrigger={<Button variant="ghost">Enter the Flow</Button>}
           />
         </div>
       </motion.header>
 
       {/* Hero Section */}
-      <section className="py-24 md:py-32 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 md:py-32 px-4 relative">
+        <div className="absolute inset-0 bg-grid-slate-900 [mask-image:linear-gradient(to_bottom,white_10%,transparent_50%)]"></div>
+        <div className="max-w-4xl mx-auto text-center relative">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-foreground/90">
-              Document the Descent
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-foreground" style={{textShadow: '0 0 15px oklch(var(--secondary))'}}>
+              Catch the Digital Wave
               <br />
-              <span className="text-foreground/50">A Task at a Time</span>
+              <span className="text-primary">An Aesthetic at a Time</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              An exercise in futility. Each task, a single drop in an ocean of
-              unending obligation. Catalogue the inevitable.
+              An exercise in pure flow. Each task, a single ripple in an ocean of
+              digital sunsets. Curate your vibe.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -81,10 +82,9 @@ export default function Landing() {
                 trigger={
                   <Button
                     size="lg"
-                    className="text-lg px-8 py-6"
-                    variant="outline"
+                    className="text-lg px-8 py-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_20px_oklch(var(--primary))]"
                   >
-                    Acknowledge the Burden
+                    Start the Flow
                   </Button>
                 }
               />
@@ -94,7 +94,7 @@ export default function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-card/50 border-y border-border/50">
+      <section className="py-20 px-4 bg-card/50 border-y border-border">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,9 +102,9 @@ export default function Landing() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4 text-foreground/80">The Anatomy of Despair</h2>
+            <h2 className="text-4xl font-bold mb-4 text-foreground/90" style={{textShadow: '0 0 10px oklch(var(--primary))'}}>The Anatomy of the Vibe</h2>
             <p className="text-xl text-muted-foreground">
-              Tools designed to quantify the weight of existence.
+              Tools designed to engineer your perfect workflow.
             </p>
           </motion.div>
 
@@ -115,9 +115,9 @@ export default function Landing() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 + 0.1 * index }}
-                className="text-center p-6 rounded-xl bg-background/50 border border-border/50 shadow-sm"
+                className="text-center p-6 rounded-xl bg-background/50 border border-border shadow-lg shadow-primary/10"
               >
-                <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4 shadow-[0_0_15px_oklch(var(--primary)/50%)]">
                   <feature.icon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2 text-foreground/90">{feature.title}</h3>
@@ -136,9 +136,9 @@ export default function Landing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h2 className="text-4xl font-bold mb-6 text-foreground/80">Still Here?</h2>
+            <h2 className="text-4xl font-bold mb-6 text-secondary" style={{textShadow: '0 0 15px oklch(var(--secondary))'}}>Ready to Ride?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              The list is patient. It will wait for you to add another stone to the pile.
+              The stream is waiting. Drop a new task and get in the zone.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -148,10 +148,9 @@ export default function Landing() {
                 trigger={
                   <Button
                     size="lg"
-                    className="text-lg px-8 py-6"
-                    variant="outline"
+                    className="text-lg px-8 py-6 bg-secondary text-white hover:bg-secondary/90 shadow-[0_0_20px_oklch(var(--secondary))]"
                   >
-                    Continue the Cycle
+                    Start the Flow
                   </Button>
                 }
               />
@@ -161,9 +160,9 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border/50 bg-background/80">
+      <footer className="py-8 px-4 border-t border-border bg-background/80">
         <div className="max-w-6xl mx-auto text-center text-muted-foreground">
-          <p>&copy; 2024 Sigh... And so it continues.</p>
+          <p>&copy; 2024 VibeFlow. Keep it aesthetic.</p>
         </div>
       </footer>
     </div>

@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
-import { Moon } from "lucide-react";
+import { Waves } from "lucide-react";
 import { useQuery } from "convex/react";
 import { TodoItem } from "./TodoItem";
 
@@ -12,7 +12,7 @@ export function TodoList() {
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="p-4 border border-border/50 rounded-lg">
+            <div className="p-4 border border-border/50 rounded-lg bg-card/50">
               <div className="flex items-start gap-3">
                 <div className="w-5 h-5 bg-muted rounded mt-1"></div>
                 <div className="flex-1">
@@ -34,10 +34,10 @@ export function TodoList() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center py-16 border border-dashed border-border/50 rounded-lg"
       >
-        <Moon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium mb-2 text-foreground/80">A brief, deceptive calm.</h3>
+        <Waves className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-lg font-medium mb-2 text-foreground/80">The stream is clear.</h3>
         <p className="text-muted-foreground">
-          The silence will soon be broken by obligation.
+          Time to capture a new vibe.
         </p>
       </motion.div>
     );
@@ -51,7 +51,7 @@ export function TodoList() {
       {pendingTodos.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            The Weight of the Present ({pendingTodos.length})
+            Current Flow ({pendingTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>
@@ -66,7 +66,7 @@ export function TodoList() {
       {completedTodos.length > 0 && (
         <div>
           <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            Ghosts of Accomplishment ({completedTodos.length})
+            Past Waves ({completedTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>

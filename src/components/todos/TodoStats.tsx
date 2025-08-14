@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { Check, ShieldAlert, Hourglass, Sigma } from "lucide-react";
+import { Check, Flame, Hourglass, Sigma } from "lucide-react";
 import { useQuery } from "convex/react";
 
 export function TodoStats() {
@@ -26,27 +26,27 @@ export function TodoStats() {
 
   const statCards = [
     {
-      title: "Sum of Sorrows",
+      title: "Total Vibes",
       value: stats.total,
       icon: Sigma,
-      color: "text-primary",
+      color: "text-secondary",
     },
     {
-      title: "Moments of Respite",
+      title: "Vibes Completed",
       value: stats.completed,
       icon: Check,
-      color: "text-green-500/80",
+      color: "text-green-400",
     },
     {
-      title: "Actively Enduring",
+      title: "Current Flow",
       value: stats.pending,
       icon: Hourglass,
-      color: "text-yellow-500/80",
+      color: "text-yellow-400",
     },
     {
-      title: "Imminent Dread",
+      title: "High-Energy",
       value: stats.highPriority,
-      icon: ShieldAlert,
+      icon: Flame,
       color: "text-destructive",
     },
   ];
@@ -60,10 +60,10 @@ export function TodoStats() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
         >
-          <Card className="bg-card/70 border-border/70">
+          <Card className="bg-card border-border backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-muted-foreground">{stat.title}</CardTitle>
-              <stat.icon className={`h-4 w-4 ${stat.color}`} />
+              <stat.icon className={`h-4 w-4 ${stat.color}`} style={{filter: `drop-shadow(0 0 3px currentColor)`}} />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold text-foreground/90">{stat.value}</div>
