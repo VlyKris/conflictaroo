@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
-import { Rocket } from "lucide-react";
+import { Eye } from "lucide-react";
 import { useQuery } from "convex/react";
 import { TodoItem } from "./TodoItem";
 
@@ -30,16 +30,16 @@ export function TodoList() {
   if (todos.length === 0) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1, rotate: 360 }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="text-center py-16 border-8 border-dotted border-primary/50 rounded-full"
+        className="text-center py-16 border-2 border-dashed border-primary/50 rounded-lg"
       >
-        <Rocket className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-2xl font-bold mb-2 text-foreground/80">Wow, Such Empty</h3>
-        <p className="text-muted-foreground font-semibold">
-          Go add something! Or take a nap.
-        </p>
+        <Eye className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-2xl font-bold mb-2 text-foreground/80">
+          The Void Stares Back
+        </h3>
+        <p className="text-muted-foreground">It is unimpressed. Add data.</p>
       </motion.div>
     );
   }
@@ -51,8 +51,8 @@ export function TodoList() {
     <div className="space-y-8">
       {pendingTodos.length > 0 && (
         <div>
-          <h2 className="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
-            THE PILE ({pendingTodos.length})
+          <h2 className="text-2xl font-extrabold mb-4 text-primary">
+            THE NOW-THING ({pendingTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>
@@ -66,8 +66,8 @@ export function TodoList() {
 
       {completedTodos.length > 0 && (
         <div>
-          <h2 className="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-            GRAVEYARD ({completedTodos.length})
+          <h2 className="text-2xl font-extrabold mb-4 text-muted-foreground">
+            THE THEN-THING ({completedTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>

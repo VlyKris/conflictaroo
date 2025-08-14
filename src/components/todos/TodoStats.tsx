@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { api } from "@/convex/_generated/api";
 import { motion } from "framer-motion";
-import { Banana, Gamepad2, Ghost, Bone } from "lucide-react";
+import { Brain, CloudDrizzle, Anchor, Biohazard } from "lucide-react";
 import { useQuery } from "convex/react";
 
 export function TodoStats() {
@@ -26,27 +26,27 @@ export function TodoStats() {
 
   const statCards = [
     {
-      title: "Total Thingies",
+      title: "Cognitive Loads",
       value: stats.total,
-      icon: Bone,
+      icon: Brain,
       color: "text-secondary",
     },
     {
-      title: "Done Dones",
+      title: "Released Thoughts",
       value: stats.completed,
-      icon: Gamepad2,
+      icon: CloudDrizzle,
       color: "text-green-500",
     },
     {
-      title: "Stuff 2 Do",
+      title: "Lingering Whispers",
       value: stats.pending,
-      icon: Banana,
+      icon: Anchor,
       color: "text-yellow-500",
     },
     {
-      title: "SCARY STUFF",
+      title: "Red Alerts",
       value: stats.highPriority,
-      icon: Ghost,
+      icon: Biohazard,
       color: "text-destructive",
     },
   ];
@@ -58,16 +58,20 @@ export function TodoStats() {
           key={stat.title}
           initial={{ opacity: 0, y: 50, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
-          whileHover={{ rotate: (index % 2 === 0 ? 5 : -5), scale: 1.1 }}
+          transition={{ delay: index * 0.1, type: "spring", stiffness: 150 }}
+          whileHover={{ scale: 1.05 }}
         >
-          <Card className="bg-card border-4 border-dashed border-primary backdrop-blur-sm">
+          <Card className="bg-card border-2 border-primary/30 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-lg font-black text-card-foreground">{stat.title}</CardTitle>
-              <stat.icon className={`h-6 w-6 ${stat.color}`} />
+              <CardTitle className="text-md text-card-foreground">
+                {stat.title}
+              </CardTitle>
+              <stat.icon className={`h-5 w-5 ${stat.color}`} />
             </CardHeader>
             <CardContent>
-              <div className="text-4xl font-extrabold text-foreground/90">{stat.value}</div>
+              <div className="text-3xl font-extrabold text-foreground/90">
+                {stat.value}
+              </div>
             </CardContent>
           </Card>
         </motion.div>

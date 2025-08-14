@@ -26,11 +26,11 @@ export function TodoItem({ todo }: TodoItemProps) {
       await toggleTodo({ id: todo._id });
       toast.success(
         todo.completed
-          ? "Vibe reactivated."
-          : "Vibe captured.",
+          ? "The thought has returned from the ether."
+          : "The notion is now contained.",
       );
     } catch (error) {
-      toast.error("Signal lost. Try again.");
+      toast.error("The static resists.");
       console.error(error);
     }
   };
@@ -38,9 +38,9 @@ export function TodoItem({ todo }: TodoItemProps) {
   const handleDelete = async () => {
     try {
       await deleteTodo({ id: todo._id });
-      toast.success("Poof! It's gone.");
+      toast.success("Released into the static.");
     } catch (error) {
-      toast.error("It refuses to die.");
+      toast.error("It clings to existence.");
       console.error(error);
     }
   };
@@ -68,11 +68,11 @@ export function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -100 }}
+      initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 100, transition: { duration: 0.2 } }}
+      exit={{ opacity: 0, x: 50, transition: { duration: 0.2 } }}
       layout
-      className={`group p-4 border-4 border-double border-border rounded-lg transition-all hover:border-primary/80 ${
+      className={`group p-4 border-2 border-border rounded-lg transition-all hover:border-primary/80 ${
         todo.completed ? "bg-card/20" : "bg-card"
       }`}
     >
@@ -86,7 +86,7 @@ export function TodoItem({ todo }: TodoItemProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <h3
-              className={`font-black text-xl transition-colors ${
+              className={`font-bold text-lg transition-colors ${
                 todo.completed
                   ? "line-through text-muted-foreground"
                   : "text-foreground/90"
@@ -99,7 +99,11 @@ export function TodoItem({ todo }: TodoItemProps) {
                 todo.priority,
               )}`}
             >
-              {todo.priority === "high" ? "OMG AHHH" : todo.priority === "medium" ? "Kinda" : "Meh"}
+              {todo.priority === "high"
+                ? "!!!"
+                : todo.priority === "medium"
+                ? "??"
+                : "?"}
             </span>
           </div>
 
@@ -112,7 +116,7 @@ export function TodoItem({ todo }: TodoItemProps) {
           {todo.dueDate && (
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground/70 mt-2">
               <Calendar className="h-3.5 w-3.5" />
-              <span>Sunset: {formatDate(todo.dueDate)}</span>
+              <span>Expires: {formatDate(todo.dueDate)}</span>
             </div>
           )}
         </div>
@@ -133,7 +137,7 @@ export function TodoItem({ todo }: TodoItemProps) {
               className="text-destructive cursor-pointer focus:bg-destructive/10 focus:text-destructive font-bold"
             >
               <Trash2 className="h-4 w-4 mr-2" />
-              NUKE IT
+              BANISH
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

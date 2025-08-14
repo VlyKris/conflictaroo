@@ -66,44 +66,46 @@ export function TodoForm() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <motion.div whileHover={{ scale: 1.1, y: -5 }} whileTap={{ scale: 0.9 }}>
-          <Button className="gap-2 bg-accent text-accent-foreground hover:bg-secondary border-4">
-            <Plus className="h-4 w-4 animate-spin" />
-            New Thingamajig
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Button className="gap-2 bg-accent text-accent-foreground hover:bg-accent/80 border-2">
+            <Plus className="h-4 w-4" />
+            Inject Notion
           </Button>
         </motion.div>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-card border-8 border-dashed border-secondary">
+      <DialogContent className="sm:max-w-[425px] bg-card border-2 border-primary">
         <DialogHeader>
-          <DialogTitle className="text-primary text-3xl font-black">Make a Task!</DialogTitle>
+          <DialogTitle className="text-primary text-2xl font-black">
+            New Data Packet
+          </DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="title" className="font-bold text-lg">Whatcha callit?</Label>
+            <Label htmlFor="title" className="font-bold">Name the Nag</Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g. Pet the dog"
+              placeholder="e.g. Contemplate the orb"
               required
-              className="border-2 border-primary"
+              className="border-2 border-primary/50"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="description" className="font-bold text-lg">The deets (or whatever)</Label>
+            <Label htmlFor="description" className="font-bold">Subtext</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Tell me more tell me more"
+              placeholder="Additional data streams"
               rows={3}
-              className="border-2 border-primary"
+              className="border-2 border-primary/50"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority" className="font-bold text-lg">How much u care?</Label>
+            <Label htmlFor="priority" className="font-bold">Urgency Level</Label>
             <Select
               value={priority}
               onValueChange={(value: "low" | "medium" | "high") =>
@@ -114,21 +116,21 @@ export function TodoForm() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Meh</SelectItem>
-                <SelectItem value="medium">Kinda</SelectItem>
-                <SelectItem value="high">OMG AHHH</SelectItem>
+                <SelectItem value="low">?</SelectItem>
+                <SelectItem value="medium">??</SelectItem>
+                <SelectItem value="high">!!!</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="dueDate" className="font-bold text-lg">When's it due? (don't lie)</Label>
+            <Label htmlFor="dueDate" className="font-bold">Expiration Date</Label>
             <Input
               id="dueDate"
               type="date"
               value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}
-              className="border-2 border-primary"
+              className="border-2 border-primary/50"
             />
           </div>
 
@@ -138,12 +140,15 @@ export function TodoForm() {
               variant="ghost"
               onClick={() => setOpen(false)}
               disabled={isLoading}
-              className="font-bold"
             >
-              nvm lol
+              flee
             </Button>
-            <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 font-extrabold text-lg" disabled={isLoading}>
-              {isLoading ? "DOIN IT..." : "YEEET"}
+            <Button
+              type="submit"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold"
+              disabled={isLoading}
+            >
+              {isLoading ? "IMPLANTING..." : "IMPLANT"}
             </Button>
           </div>
         </form>
