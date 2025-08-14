@@ -36,7 +36,7 @@ export function TodoForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!title.trim()) {
-      toast.error("Please enter a title");
+      toast.error("A title, however meaningless, is required.");
       return;
     }
 
@@ -49,14 +49,14 @@ export function TodoForm() {
         dueDate: dueDate ? new Date(dueDate).getTime() : undefined,
       });
 
-      toast.success("Todo created successfully!");
+      toast.success("Another burden has been added.");
       setTitle("");
       setDescription("");
       setPriority("medium");
       setDueDate("");
       setOpen(false);
     } catch (error) {
-      toast.error("Failed to create todo");
+      toast.error("Failed to add to the pile. A moment of respite.");
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -67,15 +67,15 @@ export function TodoForm() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Button className="gap-2">
+          <Button className="gap-2" variant="outline">
             <Plus className="h-4 w-4" />
-            Add Todo
+            Add Burden
           </Button>
         </motion.div>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create New Todo</DialogTitle>
+          <DialogTitle>Add a New Burden</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -84,38 +84,43 @@ export function TodoForm() {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="What needs to be done?"
+              placeholder="What fresh hell is this?"
               required
             />
           </div>
-          
+
           <div className="space-y-2">
             <Label htmlFor="description">Description (optional)</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Add more details..."
+              placeholder="Elaborate on the misery..."
               rows={3}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="priority">Priority</Label>
-            <Select value={priority} onValueChange={(value: "low" | "medium" | "high") => setPriority(value)}>
+            <Label htmlFor="priority">Suffering Level</Label>
+            <Select
+              value={priority}
+              onValueChange={(value: "low" | "medium" | "high") =>
+                setPriority(value)
+              }
+            >
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="low">Low</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="high">High</SelectItem>
+                <SelectItem value="low">Tolerable</SelectItem>
+                <SelectItem value="medium">Challenging</SelectItem>
+                <SelectItem value="high">Excruciating</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="dueDate">Due Date (optional)</Label>
+            <Label htmlFor="dueDate">Inevitable Deadline (optional)</Label>
             <Input
               id="dueDate"
               type="date"
@@ -127,14 +132,14 @@ export function TodoForm() {
           <div className="flex justify-end gap-2 pt-4">
             <Button
               type="button"
-              variant="outline"
+              variant="ghost"
               onClick={() => setOpen(false)}
               disabled={isLoading}
             >
-              Cancel
+              Flee
             </Button>
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Creating..." : "Create Todo"}
+            <Button type="submit" variant="outline" disabled={isLoading}>
+              {isLoading ? "Adding..." : "Add to the Pile"}
             </Button>
           </div>
         </form>

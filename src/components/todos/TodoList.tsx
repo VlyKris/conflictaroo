@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
-import { motion } from "framer-motion";
-import { CheckCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Moon } from "lucide-react";
 import { useQuery } from "convex/react";
 import { TodoItem } from "./TodoItem";
 
@@ -12,9 +12,9 @@ export function TodoList() {
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="p-4 border rounded-lg">
+            <div className="p-4 border border-border/50 rounded-lg">
               <div className="flex items-start gap-3">
-                <div className="w-4 h-4 bg-muted rounded mt-1"></div>
+                <div className="w-5 h-5 bg-muted rounded mt-1"></div>
                 <div className="flex-1">
                   <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
                   <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -30,43 +30,51 @@ export function TodoList() {
   if (todos.length === 0) {
     return (
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="text-center py-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center py-16 border border-dashed border-border/50 rounded-lg"
       >
-        <CheckCircle className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium mb-2">No todos yet</h3>
+        <Moon className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-lg font-medium mb-2 text-foreground/80">Empty. For now.</h3>
         <p className="text-muted-foreground">
-          Create your first todo to get started!
+          Go on, add a task. The void awaits.
         </p>
       </motion.div>
     );
   }
 
-  const pendingTodos = todos.filter(todo => !todo.completed);
-  const completedTodos = todos.filter(todo => todo.completed);
+  const pendingTodos = todos.filter((todo) => !todo.completed);
+  const completedTodos = todos.filter((todo) => todo.completed);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {pendingTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold mb-4">Pending ({pendingTodos.length})</h2>
-          <div className="space-y-3">
-            {pendingTodos.map((todo) => (
-              <TodoItem key={todo._id} todo={todo} />
-            ))}
-          </div>
+          <h2 className="text-lg font-semibold mb-4 text-foreground/80">
+            Lingering ({pendingTodos.length})
+          </h2>
+          <motion.div layout className="space-y-3">
+            <AnimatePresence>
+              {pendingTodos.map((todo) => (
+                <TodoItem key={todo._id} todo={todo} />
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       )}
 
       {completedTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold mb-4">Completed ({completedTodos.length})</h2>
-          <div className="space-y-3">
-            {completedTodos.map((todo) => (
-              <TodoItem key={todo._id} todo={todo} />
-            ))}
-          </div>
+          <h2 className="text-lg font-semibold mb-4 text-foreground/80">
+            Finished... for what? ({completedTodos.length})
+          </h2>
+          <motion.div layout className="space-y-3">
+            <AnimatePresence>
+              {completedTodos.map((todo) => (
+                <TodoItem key={todo._id} todo={todo} />
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       )}
     </div>
