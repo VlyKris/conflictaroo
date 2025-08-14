@@ -38,9 +38,9 @@ export function TodoItem({ todo }: TodoItemProps) {
   const handleDelete = async () => {
     try {
       await deleteTodo({ id: todo._id });
-      toast.success("Vibe cleared.");
+      toast.success("Poof! It's gone.");
     } catch (error) {
-      toast.error("Signal lost. Try again.");
+      toast.error("It refuses to die.");
       console.error(error);
     }
   };
@@ -48,11 +48,11 @@ export function TodoItem({ todo }: TodoItemProps) {
   const getPriorityClasses = (priority: string) => {
     switch (priority) {
       case "high":
-        return "border-destructive/50 text-destructive";
+        return "border-destructive/80 text-destructive bg-red-500/20 animate-pulse";
       case "medium":
-        return "border-yellow-400/30 text-yellow-400/80";
+        return "border-yellow-400/80 text-yellow-500 bg-yellow-500/20";
       case "low":
-        return "border-primary/30 text-primary/80";
+        return "border-green-500/80 text-green-600 bg-green-500/20";
       default:
         return "border-muted-foreground/30 text-muted-foreground";
     }
@@ -68,12 +68,12 @@ export function TodoItem({ todo }: TodoItemProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.2 } }}
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100, transition: { duration: 0.2 } }}
       layout
-      className={`group p-4 border border-border rounded-lg transition-all hover:border-primary/50 ${
-        todo.completed ? "bg-card/50" : "bg-card"
+      className={`group p-4 border-4 border-double border-border rounded-lg transition-all hover:border-primary/80 ${
+        todo.completed ? "bg-card/20" : "bg-card"
       }`}
     >
       <div className="flex items-start gap-4">
@@ -86,7 +86,7 @@ export function TodoItem({ todo }: TodoItemProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <h3
-              className={`font-medium transition-colors ${
+              className={`font-black text-xl transition-colors ${
                 todo.completed
                   ? "line-through text-muted-foreground"
                   : "text-foreground/90"
@@ -95,11 +95,11 @@ export function TodoItem({ todo }: TodoItemProps) {
               {todo.title}
             </h3>
             <span
-              className={`text-xs px-2 py-0.5 rounded-full border capitalize ${getPriorityClasses(
+              className={`text-sm px-3 py-1 rounded-full border-2 capitalize font-bold ${getPriorityClasses(
                 todo.priority,
               )}`}
             >
-              {todo.priority}
+              {todo.priority === "high" ? "OMG AHHH" : todo.priority === "medium" ? "Kinda" : "Meh"}
             </span>
           </div>
 
@@ -130,10 +130,10 @@ export function TodoItem({ todo }: TodoItemProps) {
           <DropdownMenuContent align="end">
             <DropdownMenuItem
               onClick={handleDelete}
-              className="text-destructive cursor-pointer focus:bg-destructive/10 focus:text-destructive"
+              className="text-destructive cursor-pointer focus:bg-destructive/10 focus:text-destructive font-bold"
             >
               <Trash2 className="h-4 w-4 mr-2" />
-              Clear Vibe
+              NUKE IT
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

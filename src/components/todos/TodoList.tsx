@@ -1,6 +1,6 @@
 import { api } from "@/convex/_generated/api";
 import { motion, AnimatePresence } from "framer-motion";
-import { Waves } from "lucide-react";
+import { Rocket } from "lucide-react";
 import { useQuery } from "convex/react";
 import { TodoItem } from "./TodoItem";
 
@@ -30,14 +30,15 @@ export function TodoList() {
   if (todos.length === 0) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center py-16 border border-dashed border-border/50 rounded-lg"
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1, rotate: 360 }}
+        transition={{ duration: 1 }}
+        className="text-center py-16 border-8 border-dotted border-primary/50 rounded-full"
       >
-        <Waves className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium mb-2 text-foreground/80">The stream is clear.</h3>
-        <p className="text-muted-foreground">
-          Time to capture a new vibe.
+        <Rocket className="h-24 w-24 text-muted-foreground mx-auto mb-4" />
+        <h3 className="text-2xl font-bold mb-2 text-foreground/80">Wow, Such Empty</h3>
+        <p className="text-muted-foreground font-semibold">
+          Go add something! Or take a nap.
         </p>
       </motion.div>
     );
@@ -50,8 +51,8 @@ export function TodoList() {
     <div className="space-y-8">
       {pendingTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            Current Flow ({pendingTodos.length})
+          <h2 className="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500">
+            THE PILE ({pendingTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>
@@ -65,8 +66,8 @@ export function TodoList() {
 
       {completedTodos.length > 0 && (
         <div>
-          <h2 className="text-lg font-semibold mb-4 text-foreground/80">
-            Past Waves ({completedTodos.length})
+          <h2 className="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+            GRAVEYARD ({completedTodos.length})
           </h2>
           <motion.div layout className="space-y-3">
             <AnimatePresence>
